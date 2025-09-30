@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mukund Teli | Networking & DevOps Portfolio</title>
+<style>
+:root{
+  --bg:#f5f9ff; --card:#fff; --accent:#0077b6;
+  --muted:#555; --radius:16px; --maxw:1100px; --gap:24px;
+  --ff:"Segoe UI",Roboto,Arial,sans-serif;
+}
+body.dark{
+  --bg:#0f1724; --card:#0b1220; --accent:#48cae4;
+  --muted:#a0a0a0; color:#eaeaea;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:var(--ff); background:var(--bg); color:#222;
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+.container{max-width:var(--maxw);margin:auto;padding:40px 20px;display:flex;flex-direction:column;gap:60px}
+
+/* Header */
+header{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;
+  background:rgba(255,255,255,.9);backdrop-filter:blur(8px);
+  border-radius:var(--radius);padding:12px 20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+body.dark header{background:rgba(15,23,36,.9)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.logo{
+  width:52px;height:52px;border-radius:12px;
+  background:linear-gradient(135deg,var(--accent),#48cae4);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-size:20px;
+}
+nav.desktop{display:flex;gap:20px}
+nav a{
+  color:var(--muted);text-decoration:none;font-weight:600;
+  padding:6px 10px;border-radius:8px;transition:.3s;
+}
+nav a:hover{color:var(--accent);background:rgba(0,119,182,0.1)}
+.menu-btn,.dark-toggle{background:none;border:none;cursor:pointer;font-size:22px}
+.menu-btn{display:none;color:var(--accent)}
+.dark-toggle{margin-left:10px;color:var(--accent)}
+
+/* Mobile nav */
+.mobile-nav{
+  display:none;flex-direction:column;margin-top:12px;background:var(--card);
+  border-radius:12px;border:1px solid rgba(0,0,0,0.08);
+}
+.mobile-nav a{
+  display:block;padding:14px 18px;color:var(--muted);
+  text-decoration:none;border-bottom:1px solid rgba(0,0,0,0.05);
+}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:var(--accent);background:rgba(0,119,182,0.05)}
+
+/* Hero */
+.hero{
+  display:grid;grid-template-columns:1fr 320px;gap:var(--gap);align-items:center;
+}
+.intro{
+  padding:32px;background:var(--card);border-radius:var(--radius);
+  box-shadow:0 6px 20px rgba(0,0,0,0.05);
+}
+.intro h1{font-size:32px;margin-bottom:10px;color:var(--accent)}
+.intro p.lead{color:var(--muted);margin-bottom:20px;font-size:17px}
+.cta{display:flex;gap:14px;margin-bottom:20px}
+.btn{
+  background:var(--accent);color:#fff;border:none;padding:12px 20px;
+  border-radius:10px;font-weight:700;cursor:pointer;transition:.3s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,119,182,0.3)}
+.btn.secondary{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+aside.profile{text-align:center}
+.profile-photo{
+  width:180px;height:180px;object-fit:cover;border-radius:50%;
+  border:4px solid var(--accent);box-shadow:0 6px 16px rgba(0,0,0,0.1);
+  margin-bottom:15px;
+}
+.profile-name{font-size:22px;font-weight:700;color:#333}
+body.dark .profile-name{color:#eee}
+
+/* Sections */
+.section{display:flex;flex-direction:column;gap:20px}
+.section h2{font-size:26px;color:var(--accent)}
+
+/* Grids & cards */
+.grid,.projects-grid,.skills-grid,.edu-grid{
+  display:grid;gap:var(--gap);grid-template-columns:1fr;
+}
+.feature,.project,.skill,.edu-card{
+  background:var(--card);padding:20px;border-radius:12px;
+  border:1px solid rgba(0,0,0,0.08);transition:.3s;
+}
+.feature:hover,.project:hover,.skill:hover,.edu-card:hover{
+  transform:translateY(-4px);box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+.feature h3,.project h4,.edu-card h4{margin-bottom:6px;color:#222}
+.feature p,.project p,.edu-card p{color:var(--muted);font-size:14px}
+body.dark .feature h3,body.dark .project h4,body.dark .edu-card h4{color:#eee}
+
+/* Skills */
+.skill-name{display:block;font-weight:600;margin-bottom:0.4rem;color:#333}
+body.dark .skill-name{color:#eee}
+.progress{
+  background:#e0eaf3;border-radius:20px;overflow:hidden;height:20px;
+}
+body.dark .progress{background:#1c2533}
+.progress-bar{
+  background:var(--accent);height:100%;line-height:20px;color:#fff;
+  font-size:0.9rem;text-align:right;padding-right:6px;border-radius:20px 0 0 20px;
+  width:0;transition:width 1.5s ease;
+}
+
+/* Contact */
+.contact{display:flex;gap:var(--gap);align-items:flex-start}
+.contact form{flex:1;display:grid;gap:14px}
+input,textarea{
+  background:#f8fbff;border:1px solid rgba(0,0,0,0.1);padding:12px;
+  color:inherit;border-radius:8px;outline:none;font-size:14px;
+}
+body.dark input,body.dark textarea{background:#1c2533;border-color:#333;color:#eee}
+textarea{min-height:120px;resize:vertical}
+input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 6px rgba(0,119,182,0.3)}
+
+/* Footer */
+footer{
+  text-align:center;color:var(--muted);font-size:13px;
+  padding-top:20px;border-top:1px solid rgba(0,0,0,0.05);
+}
+
+/* Responsive */
+@media (max-width:992px){.hero{grid-template-columns:1fr}}
+@media (max-width:600px){
+  nav.desktop{display:none}
+  .menu-btn{display:block}
+  .contact{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <a class="brand" href="#home">
+    <div class="logo">MT</div>
+    <div>
+      <div style="font-weight:800">Mukund Teli</div>
+      <div style="font-size:12px;color:var(--muted)">Networking & DevOps</div>
+    </div>
+  </a>
+  <nav class="desktop">
+    <a href="#home">Home</a><a href="#services">Services</a>
+    <a href="#projects">Projects</a><a href="#education">Education</a>
+    <a href="#skills">Skills</a><a href="#contact">Contact</a>
+  </nav>
+  <div>
+    <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#home">Home</a><a href="#services">Services</a>
+  <a href="#projects">Projects</a><a href="#education">Education</a>
+  <a href="#skills">Skills</a><a href="#contact">Contact</a>
+</div>
+
+<main id="home" class="hero">
+  <section class="intro">
+    <h1>Networking Engineer & DevOps Enthusiast</h1>
+    <h2>About Me</h2>
+    <p class="lead">I’m Mukund, passionate about secure, high-availability networks and automating infrastructure with DevOps tools.</p>
+    <div class="cta">
+      <button class="btn" onclick="location.href='#contact'">Contact Me</button>
+    </div>
+  </section>
+   <class="profile">
+    <img src="" alt="Mukund Photo" class="profile-photo">
+    <h2 class="profile-name">Mukund Teli</h2>
+  
+</main>
+
+<section id="education" class="section">
+  <h2>Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card"><h4>Now i am parsuing B.C.A (2023-2026)</h4><p>BLDEA College Jamkhandi — Networking & Cloud Computing</p></div>
+    <div class="edu-card"><h4>Higher Secondary</h4><p>Basaveshwar PUC Science College Kadapatti Jamkhandi</p></div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <h2>Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill"><span class="skill-name">HTML</span>
+      <div class="progress"><div class="progress-bar" data-width="89">89%</div></div></div>
+    <div class="skill"><span class="skill-name">AWS / Azure Cloud</span>
+      <div class="progress"><div class="progress-bar" data-width="80">80%</div></div></div>
+    <div class="skill"><span class="skill-name">java script</span>
+      <div class="progress"><div class="progress-bar" data-width="75">75%</div></div></div>
+    <div class="skill"><span class="skill-name">Python Scripting</span>
+      <div class="progress"><div class="progress-bar" data-width="85">85%</div></div></div>
+  </div>
+</section>
+
+<section id="contact" class="section contact">
+  <div style="flex:1">
+    <h2>Contact</h2>
+    <p style="color:var(--muted)">Want to collaborate or need a network review? Send a message.</p>
+    <form onsubmit="event.preventDefault(); alert('Message sent (demo)');">
+      <input type="text" placeholder="Your name" required>
+      <input type="email" placeholder="Email address" required>
+      <input type="text" placeholder="Short message">
+        <button class="btn" type="submit">Send</button>
+        <button class="btn secondary" type="button" onclick="location.href='#projects'">See Work</button>
+      </div>
+    </form>
+  </div>
+  <div style="width:300px;max-width:100%;">
+    <div class="feature">
+      <h3>Contact Info</h3>
+      <p style="color:var(--muted);font-size:14px">
+        Email: hello@mukund.test<br><br>
+        Location: India<br><br>
+        Linkdin:Mukund Teli<br><br>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Mukund Teli — Built with passion & precision</footer>
+</div>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+const menuBtn=document.getElementById('menuBtn');
+const mobileNav=document.getElementById('mobileNav');
+menuBtn.addEventListener('click',()=>mobileNav.style.display=
+  mobileNav.style.display==='flex'?'none':'flex');
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+    if(window.innerWidth<=600)mobileNav.style.display='none';
+  });
+});
+
+// Dark mode toggle
+document.getElementById('darkToggle').addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+});
+
+// Animate skill bars when in view
+const bars=document.querySelectorAll('.progress-bar');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.width=entry.target.dataset.width+'%';
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.4});
+bars.forEach(b=>observer.observe(b));
+</script>
+</body>
+</html>
